@@ -71,6 +71,17 @@ class TestHBNBCommand_documentation(unittest.TestCase):
         msj = "Method do_show does not has docstring"
         self.assertIsNotNone(obj, msj)  # Classes
 
+     def test_count(self):
+        """test alternative show with [class].show"""
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd("User.count()")
+            self.assertTrue(int(val.getvalue()) == 0)
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd("create User")
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd("User.count()")
+            self.assertTrue(int(val.getvalue()) == 1)
+
     def test_do_show_docstring(self):
         """
         Test if method has docstring
