@@ -106,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         storage.save()
 
-     def do_all(self, args):
+    def do_all(self, args):
         '''
             Prints all string representation of all instances
             based or not on the class name.
@@ -214,6 +214,7 @@ class HBNBCommand(cmd.Cmd):
             func(cmd_arg)
         except:
             print("*** Unknown syntax:", args[0])
+
 
 if __name__ == "__main__":
     '''
