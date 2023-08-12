@@ -99,6 +99,23 @@ instace based on the class and id"""
         else:
             print("** class doesn't exist **")
 
+    def do_count(self, arg):
+        """Usage: count <class> or <class>.count()
+        Retrieve the number of instances of a given class."""
+        argl = parse(arg)
+        count = 0
+        for obj in storage.all().values():
+            if argl[0] == obj.__class__.__name__:
+                count += 1
+        print(count)
+
+     def do_EOF(self, arg):
+        """ Close program and saves safely data, when
+        user input is CTRL + D
+        """
+        print("")
+        return True
+
     def do_update(self, arg):
         """Updates an instance based on the class name and id by adding
         or updating attributes"""
